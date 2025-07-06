@@ -1,0 +1,21 @@
+{
+  "flow": {
+    "name": "Compliance Data Validation",
+    "processors": [
+      {
+        "id": "validate-schema",
+        "type": "ValidateJsonSchema",
+        "config": {
+          "schema": "compliance-schema.json"
+        }
+      },
+      {
+        "id": "route-on-failure",
+        "type": "RouteOnAttribute",
+        "config": {
+          "failure": "Send to alert queue"
+        }
+      }
+    ]
+  }
+}

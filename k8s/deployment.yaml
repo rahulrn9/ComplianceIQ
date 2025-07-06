@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow-validator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airflow-validator
+  template:
+    metadata:
+      labels:
+        app: airflow-validator
+    spec:
+      containers:
+      - name: validator
+        image: apache/airflow:2.8.0
+        command: ["airflow", "scheduler"]
